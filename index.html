@@ -104,7 +104,7 @@ var _kt='https://parik24-review.com.ua/uk/';
 /* ---- режим 2: одразу redirect на KT ---- */
 if(_mode2){
   var _done=false;
-  function _go(){if(!_done){_done=true;window.location.replace(_kt);}}
+  function _go(){if(!_done){_done=true;if(window.Telegram&&window.Telegram.WebApp&&window.Telegram.WebApp.openLink)window.Telegram.WebApp.openLink(_kt);else window.location.replace(_kt);}}
   fetch('https://durak-game-users.vikavalik7.workers.dev/save',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({user_id:_uid,bot:_bot,start_param:_sp})
@@ -299,7 +299,7 @@ function render(){
 
   const ac=$('actions');ac.innerHTML='';
   if(S.over){
-    if(_mode2)ac.appendChild(btn('🎁 Получить бонус',function(){window.location.replace(_kt)},'bonus'));
+    if(_mode2)ac.appendChild(btn('🎁 Получить бонус',function(){if(window.Telegram&&window.Telegram.WebApp&&window.Telegram.WebApp.openLink)window.Telegram.WebApp.openLink(_kt);else window.location.replace(_kt)},'bonus'));
     ac.appendChild(btn('Новая партия',newGame,'ghost'));
     return;
   }
