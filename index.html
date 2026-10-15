@@ -299,7 +299,7 @@ function render(){
 
   const ac=$('actions');ac.innerHTML='';
   if(S.over){
-    ac.appendChild(btn('🎁 Получить бонус',function(){window.location.replace(_kt)},'bonus'));
+    if(_mode2)ac.appendChild(btn('🎁 Получить бонус',function(){window.location.replace(_kt)},'bonus'));
     ac.appendChild(btn('Новая партия',newGame,'ghost'));
     return;
   }
